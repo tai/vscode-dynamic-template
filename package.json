@@ -9,7 +9,8 @@
 		"vscode": "^1.41.0"
 	},
 	"categories": [
-		"Other", "Snippets"
+		"Other",
+		"Snippets"
 	],
 	"activationEvents": [
 		"onCommand:extension.expandTemplate"
@@ -23,11 +24,13 @@
 			}
 		],
 		"menus": {
-			"explorer/context": [{
-				"when": "explorerResourceIsFolder",
-				"command": "extension.expandTemplate",
-				"group": "2_workspace"
-			}]
+			"explorer/context": [
+				{
+					"when": "explorerResourceIsFolder",
+					"command": "extension.expandTemplate",
+					"group": "2_workspace"
+				}
+			]
 		},
 		"configuration": {
 			"title": "Dynamic Template Expander",
