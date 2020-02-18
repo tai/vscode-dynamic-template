@@ -5,6 +5,8 @@ using dynamic pathname and content.
 
 ## Features
 
+![DEMO:Using Dynamic Template](doc/dynamic-template-demo.gif)
+
 - Template is fully configurable and allows both pathname and content to be generated on-the-fly.
   - This is nice when you want to include date/time.
 - In addition to predefined template variables for dynamic expansion, you can also use any JavaScript API (including VSCode API) for dynamic processing.
@@ -40,11 +42,12 @@ For multi-root workspace, each workspace rootdir is scanned for above file.
 
 ## TODOs
 
+* Need more document on template configuration
 * Add non-overwrite mode
 * Add support for template fetching over network
 
 ## Release Notes
 
-### 0.0.1
+### 0.1.1
 
-Initial release of Dynamic Template Expander.
+Updated document.
