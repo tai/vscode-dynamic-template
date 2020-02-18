@@ -10,7 +10,7 @@ using dynamic pathname and content.
 - Template is fully configurable and allows both pathname and content to be generated on-the-fly.
   - This is nice when you want to include date/time.
 - In addition to predefined template variables for dynamic expansion, you can also use any JavaScript API (including VSCode API) for dynamic processing.
-  - Even remote template is possible if you getch it over the net.
+  - Even remote template is possible if you fetch it over the net.
 - Hook handler can be defined and run when template is generated.
   - It's handy to have file opened or folder added to workspace.
 - You can define both relatively-pathed and absolutely-pathed template.
@@ -31,8 +31,8 @@ This extension contributes the following settings:
 
 By default, configuration(s) are loaded from following locations:
 
-* <workspace-root>/.vscode/extensions/tai.dynamic-template/template.js
-* <home>/.vscode/extensions/tai.dynamic-template/template.js
+* \<workspace-root\>/.vscode/extensions/tai.dynamic-template/template.js
+* \<home\>/.vscode/extensions/tai.dynamic-template/template.js
 
 For multi-root workspace, each workspace rootdir is scanned for above file.
 
