@@ -1,0 +1,68 @@
+{
+	"publisher": "tai",
+	"repository": "https://github.com/tai/vscode-dynamic-template",
+	"name": "dynamic-template",
+	"displayName": "Dynamic Template Expander",
+	"description": "Expands file/folder template with dynamic pathname and content",
+	"version": "0.1.0",
+	"engines": {
+		"vscode": "^1.41.0"
+	},
+	"categories": [
+		"Other", "Snippets"
+	],
+	"activationEvents": [
+		"onCommand:extension.expandTemplate"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.expandTemplate",
+				"title": "Expand Template"
+			}
+		],
+		"menus": {
+			"explorer/context": [{
+				"when": "explorerResourceIsFolder",
+				"command": "extension.expandTemplate",
+				"group": "2_workspace"
+			}]
+		},
+		"configuration": {
+			"title": "Dynamic Template Expander",
+			"properties": {
+				"dynamicTemplate.configFiles": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"title": "Path to template configuration"
+					},
+					"default": [],
+					"description": "Additional configuration files, in addition to template.js under ~/.vscode and $ws/.vscode."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.1",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.41.0",
+		"eslint": "^6.8.0",
+		"@typescript-eslint/parser": "^2.18.0",
+		"@typescript-eslint/eslint-plugin": "^2.18.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.0.1",
+		"typescript": "^3.7.5",
+		"vscode-test": "^1.3.0"
+	}
+}
