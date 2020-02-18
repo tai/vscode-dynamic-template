@@ -4,7 +4,7 @@
 	"name": "dynamic-template",
 	"displayName": "Dynamic Template Expander",
 	"description": "Expands file/folder template with dynamic pathname and content",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
