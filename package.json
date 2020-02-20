@@ -4,7 +4,7 @@
 	"name": "dynamic-template",
 	"displayName": "Dynamic Template Expander",
 	"description": "Expands file/folder template with dynamic pathname and content",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"engines": {
 		"vscode": "^1.41.0"
 	},
@@ -13,7 +13,8 @@
 		"Snippets"
 	],
 	"activationEvents": [
-		"onCommand:extension.expandTemplate"
+		"onCommand:extension.expandTemplate",
+		"onCommand:extension.expandTemplateAndOverwrite"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -21,6 +22,10 @@
 			{
 				"command": "extension.expandTemplate",
 				"title": "Expand Template"
+			},
+			{
+				"command": "extension.expandTemplateAndOverwrite",
+				"title": "Expand Template (overwrite)"
 			}
 		],
 		"menus": {

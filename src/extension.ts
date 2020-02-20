@@ -443,6 +443,15 @@ export function activate(context: vscode.ExtensionContext) {
 			key?: string,
 			configs?: string[]
 		} = {
+			overwrite: false
+		}) => {
+			expandTemplate(context, { basedir: uri?.fsPath, overwrite: opt.overwrite, key: opt.key, configs: opt.configs });
+		}),
+		vscode.commands.registerCommand('extension.expandTemplateAndOverwrite', (uri?: vscode.Uri, opt: {
+			overwrite?: boolean,
+			key?: string,
+			configs?: string[]
+		} = {
 			overwrite: true
 		}) => {
 			expandTemplate(context, { basedir: uri?.fsPath, overwrite: opt.overwrite, key: opt.key, configs: opt.configs });
