@@ -41,6 +41,7 @@ let enc = new util.TextEncoder();
 // Command entry points
 //////////////////////////////////////////////////////////////////////
 
+let lastPick: string;
 let expandTemplate = async (context: vscode.ExtensionContext, opt?: {
 	overwrite?: boolean,
 	basedir?: string,
@@ -60,13 +61,16 @@ let expandTemplate = async (context: vscode.ExtensionContext, opt?: {
 	}
 
 	let editkey = '<Edit Template>';
-	let key  = opt?.key || await vscode.window.showQuickPick(Object.keys(tps).concat([editkey]));
+	let candidates = lastPick ? [lastPick] : [];
+	candidates = candidates.concat(Object.keys(tps).filter(v => v !== lastPick)).concat([editkey]);
 
+	let key  = opt?.key || await vscode.window.showQuickPick(candidates);
 	if (key === editkey) {
 		return showQueryToEditConfig(cfs);
 	}
 
 	if (key) {
+		lastPick = key;
 		return processTemplate(tps[key], opt);
 	}
 };
@@ -178,7 +182,19 @@ let loadConfig = async (context: vscode.ExtensionContext, configs: string[] = []
 				((module, exports) => { ${code}; })(mod, mod.exports);
 				return mod.exports.getTemplate();
 			})()`;
-			return eval(wrap);
+
+			// FIXME: Need better syntax error reporting (linenumber, etc)
+			try {
+				return eval(wrap);
+			}
+			catch (e) {
+				vscode.window.showInformationMessage(`${e.toString()}: ${cf}. Edit to fix?`, 'YES', 'NO').then(ret => {
+					if (ret === 'YES') {
+						vsopen(cf);
+					}
+				});
+				throw(e);
+			}
 		}, err => {
 			if (err.name.startsWith("EntryNotFound")) {
 				return;
